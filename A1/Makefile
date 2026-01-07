@@ -10,24 +10,27 @@ kinds=all --error-exitcode=1
 
 all: testprog
 
-testprog: testprog.o
+userclean: userclean.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 testprog.o:testprog.c
 	$(CC) $(CFLAGS) -c $<
 
-check: testprog
-	@echo 'Bob123' | ./testprog
-	@echo 'a!' | ./testprog
-	@echo 'Admin42' | ./testprog
-	@echo 'rootuser' | ./testprog
-	@echo '_99' | ./testprog
+userclean.o:userclean.c
+	$(CC) $(CFLAGS) -c $<
+
+check: userclean
+	@echo 'Bob123' | ./userclean
+	@echo 'a!' | ./userclean
+	@echo 'Admin42' | ./userclean
+	@echo 'rootuser' | ./userclean
+	@echo '_99' | ./userclean
 
 #Run sample input under Valgrind; fails build on leaks/errors
-valgrind: testprog
-	$(VALGRIND) $(VGFLAGS) ./testprog < tests/input.txt
+valgrind: userclean
+	$(VALGRIND) $(VGFLAGS) ./userclean < tests/input.txt
 
 vg: valgrind
 
 clean:
-	rm -f testprog testprog.o
+	rm -f userclean userclean.o
