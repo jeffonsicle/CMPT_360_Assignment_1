@@ -8,12 +8,12 @@ VGFLAGS?= --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-f
 kinds=all --error-exitcode=1
 .PHONY: all clean check valgrind vg
 
-all: testprog
+all: userclean
 
 userclean: userclean.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-testprog.o:testprog.c
+userclean.o:userclean.c
 	$(CC) $(CFLAGS) -c $<
 
 userclean.o:userclean.c
