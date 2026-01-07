@@ -1,5 +1,5 @@
 CC:= gcc-13
-CFLAGS:=-std=c11-Wall-Wextra-pedantic-O2-g
+CFLAGS := -std=c11 -Wall -Wextra -pedantic -O2 -g
 LDFLAGS:=
 
 #Valgrind
@@ -25,6 +25,8 @@ check: userclean
 	@echo 'Admin42' | ./userclean
 	@echo 'rootuser' | ./userclean
 	@echo '_99' | ./userclean
+	@echo 'root' | ./userclean
+	@echo 'admin' | ./userclean
 
 #Run sample input under Valgrind; fails build on leaks/errors
 valgrind: userclean
