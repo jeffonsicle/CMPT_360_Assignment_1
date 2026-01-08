@@ -1,3 +1,9 @@
+#Student Name: Jeffrey Moniz
+#Student ID: 3148591
+#Submission Date: 
+#File Name: Makefile
+#Description: Makefile to compile userclean program with options for Valgrind memory checking.
+
 CC:= gcc-13
 CFLAGS := -std=c11 -Wall -Wextra -pedantic -O2 -g
 LDFLAGS:=
@@ -22,8 +28,10 @@ userclean.o:userclean.c
 check: userclean
 	@echo 'Bob123' | ./userclean
 	@echo 'a!' | ./userclean
-	@echo 'Admin42' | ./userclean
-	@echo 'rootuser' | ./userclean
+	@echo 'Admin 42' | ./userclean
+	@echo 'root user' | ./userclean
+	@echo 'ABCDEFGHIJKLMNOPQ' | ./userclean
+	@echo 'as!!!' | ./userclean
 	@echo '_99' | ./userclean
 	@echo 'root' | ./userclean
 	@echo 'admin' | ./userclean
