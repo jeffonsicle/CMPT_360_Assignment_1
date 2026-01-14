@@ -5,6 +5,8 @@ Student ID: 3148591
 Submission Date: 
 File Name: README.md
 
+“I certify that this submission represents entirely my own work.”
+
 This program is designed to take a user name and check if it is valid, if it is not valid the program will try to clean the username to make it valid, otherwise the program will output an error message. 
 
 I first took the input from the user and converted it to a character using fgets(), I also removed the newline character and replaced it with the \0 character. I set an if statement that checks to make sure that the input is not root, admin, or that it does not start with _, if the input is one of these than the program will output the invalid message
