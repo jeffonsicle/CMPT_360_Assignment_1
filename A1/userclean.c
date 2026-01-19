@@ -12,14 +12,24 @@ Description: This program reads a username from standard input, cleans it by con
 #include<stdlib.h>
 #include<string.h>
 
-int main() {
+int main(int argc, char *argv[]) {
     char buf[256];
 
-    // move input from stdin to buf
-    fgets(buf, sizeof buf, stdin);
-
-    // Find the first occurrence of '\n' or '\r' and replace it with '\0'
-    buf[strcspn(buf, "\n\r")] = '\0';
+    if (argc == 2) {
+        /* Read from command-line argument */
+        strncpy(buf, argv[1], sizeof buf - 1);
+        buf[sizeof buf - 1] = '\0';
+    } else if (argc == 1) {
+        /* Read from stdin */
+        if (fgets(buf, sizeof buf, stdin) == NULL) {
+            fprintf(stderr, "Input error\n");
+            return 1;
+        }
+        buf[strcspn(buf, "\n\r")] = '\0';
+    } else {
+        fprintf(stderr, "Usage: %s [username]\n", argv[0]);
+        return 1;
+    }
 
     // print the buf string followed by " : "
     printf("%s : ", buf);
@@ -30,6 +40,19 @@ int main() {
         return 0;
     }
 
+    CharCheck(buf);
+
+    // print the cleaned buf string
+    printf("%s", buf);
+
+    // print a new line character
+    printf("\n");
+    return 0;
+
+}
+
+void CharCheck(char buf[256])
+{
     for(int i = 0; buf[i] != '\0'; i++) {
         // if uppercase convert to lowercase
         if(buf[i] >= 'A' && buf[i] <= 'Z') {
@@ -89,12 +112,4 @@ int main() {
             }
         }
     }
-
-    // print the cleaned buf string
-    printf("%s", buf);
-
-    // print a new line character
-    printf("\n");
-    return 0;
-
 }
