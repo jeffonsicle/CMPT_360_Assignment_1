@@ -1,7 +1,7 @@
 /*
 Student Name: Jeffrey Moniz
 Student ID: 3148591
-Submission Date: 
+Submission Date: January 22nd 2026
 File Name: userclean.c
 Description: This program reads a username from standard input, cleans it by converting uppercase letters to lowercase,
              replacing whitespace with underscores, and removing invalid characters. If the username is "root" or
