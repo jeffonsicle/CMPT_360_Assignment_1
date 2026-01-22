@@ -12,6 +12,8 @@ Description: This program reads a username from standard input, cleans it by con
 #include<stdlib.h>
 #include<string.h>
 
+void CharCheck(char buf[]);
+
 int main(int argc, char *argv[]) {
     char buf[256];
 
@@ -51,7 +53,7 @@ int main(int argc, char *argv[]) {
 
 }
 
-void CharCheck(char buf[256])
+void CharCheck(char buf[])
 {
     for(int i = 0; buf[i] != '\0'; i++) {
         // if uppercase convert to lowercase
