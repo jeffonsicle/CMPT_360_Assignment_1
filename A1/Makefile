@@ -22,9 +22,6 @@ userclean: userclean.o
 userclean.o:userclean.c
 	$(CC) $(CFLAGS) -c $<
 
-userclean.o:userclean.c
-	$(CC) $(CFLAGS) -c $<
-
 check: userclean
 	@echo 'Bob123' | ./userclean
 	@echo 'a!' | ./userclean
